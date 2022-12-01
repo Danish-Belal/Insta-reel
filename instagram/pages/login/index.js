@@ -108,9 +108,11 @@ function index() {
         </div>
         <div className="bottom-card">
           Don't have an account?{" "}
-          <span style={{ color: "blueviolet", cursor: "pointer" }}>
+          <Link href = "/signup">
+          <span style={{ color: "blueviolet", cursor: "pointer" }} >
             Sign up
           </span>
+          </Link>
         </div>
       </div>
     </div>
