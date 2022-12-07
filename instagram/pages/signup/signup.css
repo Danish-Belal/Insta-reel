@@ -1,0 +1,39 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  text-align: center;
+  flex-direction: column;
+
+}
+
+.signup-card {
+  width: 25rem;
+  height: 29rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background-color: transparent;
+}
+
+.tnc {
+  width: 25rem;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  color: gray;
+}
+.bottom-card {
+  width: 25rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.txt {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 40px 10px;
+  text-align: center;
+}
