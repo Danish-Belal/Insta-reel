@@ -50,7 +50,7 @@ function index() {
     <div className="login-container">
       <div className="insta-mob-bg">
         <div className="carosel">
-          {/* <Carousel
+          <Carousel
             autoPlay
             interval={2000}
             infiniteLoop
@@ -63,7 +63,7 @@ function index() {
             <Image src={bg1} style={{ width: "250px" ,height:"auto" ,position:"absolute"  , left : "450px"  }} />
             <Image src={bg2} style={{ width: "250px", margin: "1rem" }} />
             <Image src={bg3} style={{ width: "250px", margin: "1rem" }} />
-          </Carousel> */}
+          </Carousel>
         </div>
       </div>
       <div>
