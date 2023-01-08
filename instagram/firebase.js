@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDMbEIEsOizcfnZUWEftjij6uvEC_tJsjk",
   authDomain: "instagram-reel-af2ee.firebaseapp.com",
@@ -19,4 +20,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const storage = getStorage(app);
-export {auth , storage};
+const db = getFirestore(app);
+export {auth , storage  , db};
