@@ -9,7 +9,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth";
 import { Route } from "@mui/icons-material";
 import { getStorage,getDownloadURL, ref, uploadBytesResumable  } from "firebase/storage";
-import { storage, Storage } from "../../firebase";
+import { storage, db } from "../../firebase";
+import {doc , setDoc} from 'firebase/firestore' 
 
 function index() {
 
@@ -47,38 +48,45 @@ function index() {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
-          // switch (snapshot.state) {
-          //   case "paused":
-          //     console.log("Upload is paused");
-          //     break;
-          //   case "running":
-          //     console.log("Upload is running");
-          //     break;
-          // }
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
         },
         (error) => {
           // A full list of error codes is available at
           // https://firebase.google.com/docs/storage/web/handle-errors
-          // switch (error.code) {
-          //   case "storage/unauthorized":
-          //     // User doesn't have permission to access the object
-          //     break;
-          //   case "storage/canceled":
-          //     // User canceled the upload
-          //     break;
+          switch (error.code) {
+            case "storage/unauthorized":
+              // User doesn't have permission to access the object
+              break;
+            case "storage/canceled":
+              // User canceled the upload
+              break;
 
-          //   // ...
+            // ...
 
-          //   case "storage/unknown":
-          //     // Unknown error occurred, inspect error.serverResponse
-          //     break;
-          // }
+            case "storage/unknown":
+              // Unknown error occurred, inspect error.serverResponse
+              break;
+          }
           console.log(error);
         },
         () => {
           // Upload completed successfully, now we can get the download URL
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
             console.log("File available at", downloadURL);
+            let userDate = {
+              fullName,
+              email,
+              password,
+              profilePhoto:downloadURL
+            }
+            await setDoc(doc(db,"users" , userInfo.user.uid),userDate);
           });
         }
       );
