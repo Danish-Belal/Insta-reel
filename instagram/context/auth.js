@@ -61,15 +61,17 @@ function AuthWrapper({ children }) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      // if (user) {
+       if (user) {
         // User is signed in, see docs for a list of available properties
         setUser(user);
         // const uid = user.uid;
         // ...
-      // } else {
-      //   // User is signed out
-      //   // ...
-      // }
+       } else {
+         // User is signed out
+         setUser('')
+      
+
+       }
     })
     setLoading(false);
   }, []);
